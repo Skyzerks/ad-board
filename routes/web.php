@@ -11,23 +11,35 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/main', function () {
-    return view('main');
-});
+Route::get('/', [
+    'as' => 'main',
+    'uses' => 'MainController@showMain'
+]);
+
+Route::get('/catalog', [
+    'as' => 'catalog',
+    'uses' => 'CatalogController@showCatalog'
+]);
 
 Route::get('/about', function () {
-    return view('about', ['name'=>'laravel']);
+    return view('about');
+})->name('about');
+
+Route::group(['middleware' => ['auth', 'admin']], function(){
+
+    Route::get('/admin', [
+        'as' => 'admin.main',
+        'uses' => function(){
+            return 'hello admin';
+        }
+    ]);
 });
 
-Route::get('/contacts', function () {
-    return view('contacts', ['info'=>'laravel.com']);
-});
 
-Route::get('/notice', function () {
-    return view('notice');
-});
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
