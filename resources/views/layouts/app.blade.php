@@ -8,17 +8,21 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+{{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
+
+    @section('title')
+            ad board
+    @show
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
+    {{--<script>--}}
+        {{--window.Laravel = {!! json_encode([--}}
+            {{--'csrfToken' => csrf_token(),--}}
+        {{--]) !!};--}}
+    {{--</script>--}}
 </head>
 <body>
     <div id="app">
@@ -36,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Ad Board
                     </a>
                 </div>
 
@@ -61,6 +65,10 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        @if(Auth::user()->is_admin==1)
+                                            <a href="{{route('admin::main')}}">Admin</a>
+                                        @endif
+                                        <a href="/user/info">Info</a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -74,12 +82,25 @@
                                 </ul>
                             </li>
                         @endif
+                        <li><a href="{{ route('catalog') }}">Catalog</a></li>
+                        <li><a href="{{ route('about') }}">About</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        @yield('content')
+
+    {{--{{ dd(Auth::user()->is_admin) }}--}}
+<!--        --><?php //dd($GLOBALS); ?>
+        {{--<br>--}}
+        {{--echo--}}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @yield('content')
+                <div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

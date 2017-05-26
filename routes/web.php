@@ -20,22 +20,50 @@ Route::get('/', [
     'uses' => 'MainController@showMain'
 ]);
 
-Route::get('/catalog', [
+Route::get('/catalog/{id?}', [
     'as' => 'catalog',
-    'uses' => 'CatalogController@showCatalog'
+    'uses' => 'CatalogController@showCategory'
 ]);
 
 Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::group(['middleware' => ['auth', 'admin']], function(){
+Route::get('/create-ad', [
+    'as' => 'create.ad',
+    'middleware' => 'auth',
+    'uses' => 'CatalogController@showCategory'
+]);
 
-    Route::get('/admin', [
-        'as' => 'admin.main',
-        'uses' => function(){
-            return 'hello admin';
-        }
+Route::get('/user/info', [
+    'as' => 'user.info',
+    'middleware' => 'auth',
+    'uses' => 'UserController@showProfile'
+]);
+
+Route::post('/create-category', [
+    'as' => 'create.category',
+    'middleware' => 'auth',
+    'uses' => 'CatalogController@createCategory'
+]);
+
+Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin::', 'prefix' => 'admin'], function(){
+
+    Route::get('/', [
+        'as' => 'main',
+        'uses' => 'Admin\UserController@index'
+//            function(){
+//            return 'hello admin';
+//        }
+    ]);
+
+    // /admin/user/
+    // /admin/user/1/edit
+    // /admin/user/1/update
+    // /admin/user/1/delete
+    // php artisan route:list
+    Route::resource('user', 'Admin\UserController', [
+        'only' => ['store', 'index', 'edit', 'update', 'destroy','create']
     ]);
 });
 
