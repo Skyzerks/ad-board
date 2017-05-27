@@ -49,19 +49,30 @@ Route::post('/create-category', [
 
 Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin::', 'prefix' => 'admin'], function(){
 
-    Route::get('/', [
-        'as' => 'main',
-        'uses' => 'Admin\UserController@index'
-//            function(){
-//            return 'hello admin';
-//        }
-    ]);
+//    Route::get('/', [
+//        'as' => 'main',
+//        'uses' => 'Admin\UserController@index'
+////            function(){
+////            return 'hello admin';
+////        }
+//    ]);
 
+    Route::resource('/', 'Admin\MainController', [
+        'only' => ['index']
+    ]);
     // /admin/user/
     // /admin/user/1/edit
     // /admin/user/1/update
     // /admin/user/1/delete
     // php artisan route:list
+    Route::resource('category', 'Admin\CategoryController', [
+        'only' => ['index', 'show', 'create', 'destroy']
+    ]);
+
+    Route::resource('ad', 'Admin\AdController', [
+        'only' => ['index', 'show', 'create','destroy']
+    ]);
+
     Route::resource('user', 'Admin\UserController', [
         'only' => ['store', 'index', 'edit', 'update', 'destroy','create']
     ]);

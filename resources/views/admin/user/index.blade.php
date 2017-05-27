@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-md-4">
 
-                welcome to admin page, {{ $user->name }}
+                welcome to page with list of users, {{ $user->name }}
 
 
-                destroy
-                edit
+                {{--destroy--}}
+                {{--edit--}}
 
                 <form action="{{ route('admin::user.create') }}" method="get">
                     <button type="submit">Create</button>

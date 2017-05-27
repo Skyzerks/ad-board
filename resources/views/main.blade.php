@@ -10,8 +10,8 @@
 
         @foreach( $categories as $key => $category )
 
-            {{--/catalog/2--}}
-            <a href="{{ route('catalog',['id' => $category->id]) }}">
+            {{--/category/2--}}
+            <a href="{{ route('category',['id' => $category->id]) }}">
                 {{ $category->title }}
             </a>
 
