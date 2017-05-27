@@ -11,7 +11,7 @@
         @foreach( $categories as $key => $category )
 
             {{--/category/2--}}
-            <a href="{{ route('category',['id' => $category->id]) }}">
+            <a href="{{ route('catalog',['id' => $category->id]) }}">
                 {{ $category->title }}
             </a>
 

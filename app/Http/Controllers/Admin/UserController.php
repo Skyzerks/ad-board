@@ -5,14 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Auth;
+use App\Repositories\UserRepository;
 
 class UserController extends Controller
 {
     public function index(Request $request){
-        $user = Auth::user();
-
-        return view('admin.user.index', ['user' => $user]);
+        $users = (new UserRepository)->getUsers();
+        return view('admin.user.index', ['users' => $users]);
     }
 
     public function create()
