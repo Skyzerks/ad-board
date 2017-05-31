@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin::', 'prefix' => 
     // /admin/user/1/delete
     // php artisan route:list
     Route::resource('category', 'Admin\CategoryController', [
-        'only' => ['index', 'show', 'create', 'destroy']
+        'only' => ['index', 'show', 'create', 'destroy', 'store']
     ]);
 
     Route::resource('ad', 'Admin\AdController', [
@@ -74,7 +74,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin::', 'prefix' => 
     ]);
 
     Route::resource('user', 'Admin\UserController', [
-        'only' => ['store', 'index', 'edit', 'update', 'destroy','create']
+        'only' => ['store', 'index', 'edit', 'update','create', 'destroy']
     ]);
 });
 

@@ -85,5 +85,6 @@ class AdController extends Controller
     {
 
         $ad=Ad::destroy($id);
+        return redirect('/admin/ad');
     }
 }

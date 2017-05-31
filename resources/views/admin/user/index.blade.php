@@ -6,6 +6,11 @@
     <div class="container">
         <h2>Users</h2>
         <p>The table that contains information about users</p>
+        <td>
+            <form action="{{ route('admin::user.create') }}" method="get">
+                <button type="submit">Create</button>
+            </form>
+        </td>
         <table class="table table-bordered">
             <thead>
             <tr>

@@ -35,13 +35,17 @@ class UserController extends Controller
             'email' => 'required'
         ]);
         $user = new \App\User();
+        $user->is_admin = ($request->get('is_admin') == 'on'? 1 : 0);
+        $user->email = $request->get('email');
         $user->name = $request->get('name');
+        $user->password = md5('0000'); //TODO: change password granting to new users
         $user->save();
-        return ;
+        return redirect('/admin/user');
     }
 
     public function destroy($id){
         $user=User::destroy($id);
+        return redirect('/admin/user');
     }
 
 

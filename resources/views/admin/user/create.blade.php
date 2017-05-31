@@ -4,22 +4,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <h1>Create new user</h1>
+                <form role="form" method="POST" action="{{ route('admin::user.store')}}">
+                    {{ csrf_field() }}
+                    <div class="form-group">
 
-                @foreach($users as $user)
+                        <input type="text" name="name" placeholder="Enter user name">
+                        <input type="email" name="email" placeholder="Enter user email">
+                        <input type="checkbox" id="is_admin" name="is_admin">
+                        <label for="is_admin">Grant admin rights?</label>
+                    </div>
 
-                    {{ $user->name }}
-
-                    <form action="{{ route('admin::user.destroy', [
-                    'id' => $user->id]) }}" method="post">
-
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                        <button type="submit">DELETE</button>
-
-                    </form>
-
-                @endforeach
+                    <button type="submit" class="btn btn-default">Create</button>
+                </form>
 
 
             </div>

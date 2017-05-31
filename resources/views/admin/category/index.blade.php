@@ -16,13 +16,19 @@
     <div class="container">
         <h2>Table of Ads</h2>
         <p>The table that contains ads from different sections</p>
+        <td>
+            <form action="{{ route('admin::category.create') }}" method="get">
+                <button type="submit">Create</button>
+            </form>
+        </td>
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th>Id</th>
                 <th>Title</th>
-                <th>created_at</th>
-                <th>updated_at</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Delete?</th>
             </tr>
             </thead>
             <tbody>

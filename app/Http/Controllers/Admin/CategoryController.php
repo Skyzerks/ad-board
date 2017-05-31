@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
+use App\Category;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -29,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -40,7 +42,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+        $category = new Category();
+        $category->title = $request->get('title');
+        $category->save();
+        return redirect('/admin/category');
     }
 
     /**
@@ -86,5 +94,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category=Category::destroy($id);
+        return redirect('/admin/category');
     }
 }
