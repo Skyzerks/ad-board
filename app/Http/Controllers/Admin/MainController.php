@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\{Category, User, Ad};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -16,8 +17,11 @@ class MainController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $users = User::all();
+        $categories = Category::all();
+        $ads = Ad::all();
 
-        return view('admin.index', ['user'=>$user]);
+        return view('admin.index', ['user'=>$user, 'users' => $users, 'categories' => $categories, 'ads' => $ads]);
     }
 
     /**

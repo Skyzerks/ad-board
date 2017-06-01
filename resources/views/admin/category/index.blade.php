@@ -29,6 +29,7 @@
                 <th>Created</th>
                 <th>Updated</th>
                 <th>Delete?</th>
+                <th>Update?</th>
             </tr>
             </thead>
             <tbody>
@@ -39,7 +40,8 @@
                     <td>{{$category->created_at}}</td>
                     <td>{{$category->updated_at}}</td>
 
-                    <td><form action="{{ route('admin::category.destroy', [
+                    <td>
+                        <form action="{{ route('admin::category.destroy', [
                     'id' => $category->id]) }}" method="post">
 
                             <input type="hidden" name="_method" value="DELETE">
@@ -47,6 +49,13 @@
 
                             <button type="submit">Delete</button>
 
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ route('admin::category.edit', [
+                    'id' => $category->id]) }}" method="get">
+
+                            <button type="submit">Edit</button>
                         </form>
                     </td>
                 </tr>

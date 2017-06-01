@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\{Category, User, Ad};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\AdRepository;
+use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
 {
@@ -27,7 +29,13 @@ class AdController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $users = User::all();
+        $categories = Category::all();
+
+        return view('admin.ad.create',
+            ['user' => $user, 'users' => $users, 'categories' => $categories]
+        );
     }
 
     /**
@@ -38,7 +46,19 @@ class AdController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'text' => 'required',
+            'user_id' => 'required',
+            'category_id' => 'required'
+        ]);
+        $ad = new Ad();
+        $ad->title = $request->get('title');
+        $ad->text = $request->get('text');
+        $ad->user_id = $request->get('user_id');
+        $ad->category_id = $request->get('category_id');
+        $ad->save();
+        return redirect('/admin/ad');
     }
 
     /**
@@ -60,7 +80,9 @@ class AdController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ad = Ad::findOrFail($id);
+
+        return view('admin.ad.edit', ['ad' => $ad]);
     }
 
     /**
@@ -72,7 +94,13 @@ class AdController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ad = Ad::findOrFail($id);
+        $ad->title = $request->get('title');
+        $ad->text = $request->get('text');
+        $ad->user_id = $request->get('user_id');
+        $ad->category_id = $request->get('category_id');
+        $ad->save();
+        return redirect('/admin/ad');
     }
 
     /**

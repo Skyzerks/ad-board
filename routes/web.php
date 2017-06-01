@@ -66,15 +66,15 @@ Route::group(['middleware' => ['auth', 'admin'], 'as' => 'admin::', 'prefix' => 
     // /admin/user/1/delete
     // php artisan route:list
     Route::resource('category', 'Admin\CategoryController', [
-        'only' => ['index', 'show', 'create', 'destroy', 'store']
+        'only' => ['index', 'store', 'edit', 'update', 'create', 'destroy']
     ]);
 
     Route::resource('ad', 'Admin\AdController', [
-        'only' => ['index', 'show', 'create','destroy']
+        'only' => ['index', 'store', 'edit', 'update', 'create', 'destroy']
     ]);
 
     Route::resource('user', 'Admin\UserController', [
-        'only' => ['store', 'index', 'edit', 'update','create', 'destroy']
+        'only' => ['index', 'store', 'edit', 'update', 'create', 'destroy']
     ]);
 });
 

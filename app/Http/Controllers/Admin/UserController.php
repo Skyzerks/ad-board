@@ -22,11 +22,20 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        return 1;
+        $user = User::findOrFail($id);
+        $check = ($user->is_admin == '1'? 'checked': null);
+
+        return view('admin.user.edit', ['user' => $user, 'check' => $check]);
     }
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        return 1;
+        $user=User::findOrFail($id);
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = md5($request->get('password'));
+        $user->is_admin = ($request->get('is_admin')=='on'?'1':'0');
+        $user->save();
+        return redirect('/admin/user');
     }
     public function store( Request $request )
     {
