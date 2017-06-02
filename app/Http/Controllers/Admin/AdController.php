@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\{Category, User, Ad};
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\AdRepository;
@@ -17,10 +18,16 @@ class AdController extends Controller
      */
     public function index()
     {
-        $ads = (new AdRepository)->getAds();
+//        $ads = (new AdRepository)->getAds();
+        $ads = Ad::paginate(5);
+//        $ads = DB::table('ads')->paginate(5);
         $users = User::all();
         $categories = Category::all();
 
+//        foreach ($ads as $ad){
+//            foreach ($users as $key => $user)
+//                $ad->user = $ad->user_id == $user->id ? $ad->name = $users[$key]->name : null;}
+//
         return view('admin.ad.index', ['ads' => $ads, 'users' => $users, 'categories' => $categories]);
     }
 

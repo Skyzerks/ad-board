@@ -14,7 +14,7 @@
     {{--</div>--}}
 
     <div class="container">
-        <h2>{{ trans('index_info.category_main') }}</h2>
+        <h2 style="color:palevioletred">{{ trans('index_info.category_main') }}</h2>
         <p>{{ trans('index_info.category') }}</p>
         <td>
             <form action="{{ route('admin::category.create') }}" method="get">

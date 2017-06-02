@@ -18,19 +18,19 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <h2>{{ trans('index_info.users') }}</h2><br>
+                <h2 style="color:lawngreen">{{ trans('index_info.users') }}</h2><br>
                 @foreach($users as $user)
                     {{ $user->name }} <br>
                 @endforeach<br>
             </div>
             <div class="col-md-4">
-                <h2>{{ trans('index_info.categories') }}</h2><br>
+                <h2 style="color:lawngreen">{{ trans('index_info.categories') }}</h2><br>
                 @foreach($categories as $category)
                     {{ $category->title }} <br>
                 @endforeach<br>
             </div>
             <div class="col-md-4">
-                <h2>{{ trans('index_info.ads') }}</h2><br>
+                <h2 style="color:lawngreen">{{ trans('index_info.ads') }}</h2><br>
                 @foreach($ads as $ad)
                     {{ $ad->title }} <br>
                 @endforeach<br>

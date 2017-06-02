@@ -14,7 +14,7 @@
     {{--</div>--}}
 
     <div class="container">
-        <h2>{{ trans('index_info.ad_main') }}</h2>
+        <h2 style="color:palevioletred">{{ trans('index_info.ad_main') }}</h2>
         <p>{{ trans('index_info.ad') }}</p>
         <td>
             <form action="{{ route('admin::ad.create') }}" method="get">
@@ -36,6 +36,7 @@
             </tr>
             </thead>
             <tbody>
+{{--            {{dd($ads, $users, $categories)}}--}}
             @foreach($ads as $ad)
                 <tr>
                     <td>{{$ad->id}}</td>
@@ -65,6 +66,7 @@
                     </td>
                 </tr>
             @endforeach
+            {{ $ads->links() }}
             </tbody>
         </table>
     </div>

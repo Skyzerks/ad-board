@@ -4,7 +4,7 @@
 {{--    {{$users}}--}}
  {{--{{dd(date("D M j G:i:s T Y"))}}--}}
     <div class="container">
-        <h2>{{ trans('index_info.user_main') }}</h2>
+        <h2 style="color:palevioletred">{{ trans('index_info.user_main') }}</h2>
         <p>{{ trans('index_info.user') }}</p>
         <td>
             <form action="{{ route('admin::user.create') }}" method="get">
@@ -54,7 +54,7 @@
                     </td>
                 </tr>
             @endforeach
-            </tbody>
+            {{$users->links()}}
         </table>
     </div>
 @endsection

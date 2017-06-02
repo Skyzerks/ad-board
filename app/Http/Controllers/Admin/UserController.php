@@ -6,11 +6,13 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     public function index(Request $request){
-        $users = (new UserRepository)->getUsers();
+//        $users = (new UserRepository)->getUsers();
+        $users = DB::table('users')->paginate(5);
         return view('admin.user.index', ['users' => $users]);
     }
 
