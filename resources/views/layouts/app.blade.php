@@ -42,6 +42,12 @@
                     <a class="navbar-brand" href="{{ url('/') }}" style="color:#31b0d5">
                         {{ trans('menu.main_message') }}
                     </a>
+                    <a class="navbar-brand" href="{{ url('/en') }}" style="color:#133d55">
+                        {{ trans('menu.local_eng') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/ua') }}" style="color:#133d55">
+                        {{ trans('menu.local_ua') }}
+                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

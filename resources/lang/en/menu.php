@@ -8,5 +8,8 @@ return [
     'info' => 'Info',
     'logout' => 'Logout',
     'login' => 'Login',
-    'register' => 'Register'
+    'register' => 'Register',
+    
+    'local_eng' => 'Eng',
+    'local_ua' => 'Ua',
 ];
