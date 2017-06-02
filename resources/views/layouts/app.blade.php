@@ -40,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Ad Board
+                        {{ trans('menu.main_message') }}
                     </a>
                 </div>
 
@@ -54,8 +54,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">{{ trans('menu.login') }}</a></li>
+                            <li><a href="{{ route('register') }}">{{ trans('menu.register') }}</a></li>
 
                         @else
                             <li class="dropdown">
@@ -66,13 +66,13 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         @if(Auth::user()->is_admin==1)
-                                            <a href="{{route('admin::index')}}">Admin</a>
+                                            <a href="{{route('admin::index')}}">{{ trans('menu.admin') }}</a>
                                         @endif
-                                        <a href="/user/info">Info</a>
+                                        <a href="/user/info">{{ trans('menu.info') }}</a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            {{ trans('menu.logout') }}
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -82,8 +82,8 @@
                                 </ul>
                             </li>
                         @endif
-                        <li><a href="{{ route('catalog') }}">Catalog</a></li>
-                        <li><a href="{{ route('about') }}">About</a></li>
+                        <li><a href="{{ route('catalog') }}">{{ trans('menu.catalog') }}</a></li>
+                        <li><a href="{{ route('about') }}">{{ trans('menu.about') }}</a></li>
                     </ul>
                 </div>
             </div>

@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1>Головна сторінка</h1>
+    <h1>{{ trans('main.header') }}</h1>
 
     <div class="catalog">
 

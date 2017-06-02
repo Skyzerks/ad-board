@@ -14,25 +14,25 @@
     {{--</div>--}}
 
     <div class="container">
-        <h2>Table of Ads</h2>
-        <p>The table that contains ads from different sections</p>
+        <h2>{{ trans('index_info.ad_main') }}</h2>
+        <p>{{ trans('index_info.ad') }}</p>
         <td>
             <form action="{{ route('admin::ad.create') }}" method="get">
-                <button type="submit">Create</button>
+                <button type="submit">{{ trans('buttons.create') }}</button>
             </form>
         </td>
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Text</th>
-                <th>User</th>
-                <th>Category</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>Delete?</th>
-                <th>Update?</th>
+                <th>{{ trans('index_info.tr_id') }}</th>
+                <th>{{ trans('index_info.tr_title') }}</th>
+                <th>{{ trans('index_info.tr_text') }}</th>
+                <th>{{ trans('index_info.tr_user') }}</th>
+                <th>{{ trans('index_info.tr_category') }}</th>
+                <th>{{ trans('index_info.tr_created') }}</th>
+                <th>{{ trans('index_info.tr_updated') }}</th>
+                <th>{{ trans('index_info.tr_delete') }}</th>
+                <th>{{ trans('index_info.tr_update') }}</th>
             </tr>
             </thead>
             <tbody>
@@ -52,7 +52,7 @@
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                        <button type="submit">Delete</button>
+                        <button type="submit">{{ trans('buttons.delete') }}</button>
 
                     </form>
                     </td>
@@ -60,7 +60,7 @@
                         <form action="{{ route('admin::ad.edit', [
                     'id' => $ad->id]) }}" method="get">
 
-                            <button type="submit">Edit</button>
+                            <button type="submit">{{ trans('buttons.edit') }}</button>
                         </form>
                     </td>
                 </tr>

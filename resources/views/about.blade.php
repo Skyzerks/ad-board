@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1>Ad board created with Laravel</h1><br>
+    <h1>{{ trans('index_info.about') }}</h1><br>
 
 <a href="{{ URL::previous() }}">Back</a>
 
