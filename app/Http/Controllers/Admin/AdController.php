@@ -18,8 +18,10 @@ class AdController extends Controller
     public function index()
     {
         $ads = (new AdRepository)->getAds();
+        $users = User::all();
+        $categories = Category::all();
 
-        return view('admin.ad.index', ['ads' => $ads]);
+        return view('admin.ad.index', ['ads' => $ads, 'users' => $users, 'categories' => $categories]);
     }
 
     /**
@@ -81,8 +83,10 @@ class AdController extends Controller
     public function edit($id)
     {
         $ad = Ad::findOrFail($id);
+        $users = User::all();
+        $categories = Category::all();
 
-        return view('admin.ad.edit', ['ad' => $ad]);
+        return view('admin.ad.edit', ['ad' => $ad, 'users' => $users, 'categories' => $categories]);
     }
 
     /**

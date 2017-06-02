@@ -9,8 +9,18 @@
                     {{ csrf_field() }}
                     <div class="form-group">
 
-                        <input type="text" name="name" placeholder="Enter user name">
-                        <input type="text" name="email" placeholder="Enter user email">
+                        <input type="text" name="title" placeholder="Enter ad title">
+                        <input type="text" name="text" placeholder="Write about the created topic">
+                        <select class="select" name="user_id">
+                            @foreach($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                        </select>
+                        <select class="select" name="category_id">
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <button type="submit" class="btn btn-default">Create</button>

@@ -16,16 +16,23 @@
     <div class="container">
         <h2>Table of Ads</h2>
         <p>The table that contains ads from different sections</p>
+        <td>
+            <form action="{{ route('admin::ad.create') }}" method="get">
+                <button type="submit">Create</button>
+            </form>
+        </td>
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th>Id</th>
                 <th>Title</th>
                 <th>Text</th>
-                <th>user_id</th>
-                <th>category_id</th>
-                <th>created_at</th>
-                <th>updated_at</th>
+                <th>User</th>
+                <th>Category</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Delete?</th>
+                <th>Update?</th>
             </tr>
             </thead>
             <tbody>
@@ -34,8 +41,8 @@
                     <td>{{$ad->id}}</td>
                     <td>{{$ad->title}}</td>
                     <td>{{$ad->text}}</td>
-                    <td>{{$ad->user_id}}</td>
-                    <td>{{$ad->category_id}}</td>
+                    <td>{{$ad->user->name}}</td>
+                    <td>{{$ad->category->title}}</td>
                     <td>{{$ad->created_at}}</td>
                     <td>{{$ad->updated_at}}</td>
 
@@ -48,6 +55,13 @@
                         <button type="submit">Delete</button>
 
                     </form>
+                    </td>
+                    <td>
+                        <form action="{{ route('admin::ad.edit', [
+                    'id' => $ad->id]) }}" method="get">
+
+                            <button type="submit">Edit</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

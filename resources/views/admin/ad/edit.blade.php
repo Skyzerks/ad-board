@@ -14,8 +14,25 @@
                     <div class="form-group">
 
 
-                        <input type="text" name="name" value="{{$ad->title}}">
-                        <input type="text" name="email" value="{{$ad->text}}">
+                        <input type="text" name="title" value="{{$ad->title}}">
+                        <input type="text" name="text" value="{{$ad->text}}">
+                        {{--<input type="text" name="user_id" list="users" />--}}
+                        {{--<datalist id="users">--}}
+                            {{--@foreach($users as $user)--}}
+                                {{--<option value="{{$user->id}}">{{$user->name}}</option>--}}
+                            {{--@endforeach--}}
+                        {{--</datalist>--}}
+                        <select class="select" name="user_id">
+                            @foreach($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                        </select>
+                        <select class="select" name="category_id">
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
+                        </select>
+
                     </div>
 
                     <button type="submit" class="btn btn-default">Update</button>
