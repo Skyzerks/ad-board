@@ -18,11 +18,14 @@ class MainController extends Controller
 
     public function showMain(CategoryRepository $catRepo)
     {
-        $categories = Category::all();
+//        $categories = Category::all();
+        $categories = Category::paginate(7);
 
-        foreach ($categories as $category){
-            $category->mainPageAds = $category->ads()->orderBy('created_at', 'desc')->take(5)->get();
-        }
+//        foreach ($categories as $category){
+//            $category->mainPageAds = $category->ads()->orderBy('created_at', 'desc')->take(5)->get();
+//        }
+
+//        dd($categories->with(['ads' => function($query){$query->orderBy('updated_at', 'desc')->take(1); }])->get());
 
         return view('main', ['categories' => $categories]);
     }
